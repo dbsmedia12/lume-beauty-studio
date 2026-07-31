@@ -34,6 +34,12 @@ export const brand = {
   ],
 };
 
+export const trustPoints = [
+  "Profesyonel bakım deneyimi",
+  "Kişiye özel uygulamalar",
+  "Modern güzellik çözümleri",
+];
+
 export const navigation = [
   { label: "Ana Sayfa", to: "/" },
   { label: "Hizmetlerimiz", to: "/hizmetlerimiz" },
