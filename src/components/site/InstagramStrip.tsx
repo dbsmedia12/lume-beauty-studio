@@ -7,7 +7,7 @@ export function InstagramStrip() {
   const items = galleryItems.slice(0, 6);
 
   return (
-    <section className="border-t border-border bg-secondary/40 py-20 lg:py-28">
+    <section className="border-t border-border bg-secondary/40 py-16 lg:py-28">
       <div className="container-editorial">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">

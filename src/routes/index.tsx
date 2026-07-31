@@ -35,7 +35,7 @@ function Index() {
     <>
       <Hero />
 
-      <section className="container-editorial py-20 lg:py-28">
+      <section className="container-editorial py-16 lg:py-28">
         <SectionIntro
           eyebrow="Hizmetlerimiz"
           title="Cildinize, bakımınıza ve zamanınıza özel uygulamalar."
@@ -46,12 +46,12 @@ function Index() {
             </Button>
           }
         />
-        <ServiceList />
+        <ServiceList variant="editorial" />
       </section>
 
       <WhyLume />
 
-      <section className="container-editorial py-20 lg:py-28">
+      <section className="container-editorial py-16 lg:py-28">
         <SectionIntro
           eyebrow="Galeri"
           title="Merkezimizden ve uygulamalarımızdan kareler."
