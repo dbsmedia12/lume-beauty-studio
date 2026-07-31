@@ -7,10 +7,10 @@ import { brand } from "@/data/site";
 export function MobileActionBar() {
   return (
     <>
-      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-border bg-background/95 backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1.4fr_1fr] border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
         <Link
           to="/randevu"
-          className="flex min-h-14 items-center justify-center gap-2 bg-accent text-xs tracking-[0.16em] text-accent-foreground uppercase"
+          className="flex min-h-13 items-center justify-center gap-2 bg-accent text-[0.72rem] tracking-[0.16em] text-accent-foreground uppercase"
         >
           <CalendarDays className="size-4" aria-hidden="true" />
           Randevu Al
@@ -19,7 +19,7 @@ export function MobileActionBar() {
           href={brand.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex min-h-14 items-center justify-center gap-2 text-xs tracking-[0.16em] text-foreground uppercase"
+          className="flex min-h-13 items-center justify-center gap-2 text-[0.72rem] tracking-[0.16em] text-foreground uppercase"
         >
           <MessageCircle className="size-4" aria-hidden="true" />
           WhatsApp
