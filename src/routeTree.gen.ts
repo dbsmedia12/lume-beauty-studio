@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GaleriRouteImport } from './routes/galeri'
+import { Route as HakkimizdaRouteImport } from './routes/hakkimizda'
+import { Route as HizmetlerimizRouteImport } from './routes/hizmetlerimiz'
+import { Route as IletisimRouteImport } from './routes/iletisim'
+import { Route as RandevuRouteImport } from './routes/randevu'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GaleriRoute = GaleriRouteImport.update({
+  id: '/galeri',
+  path: '/galeri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HakkimizdaRoute = HakkimizdaRouteImport.update({
+  id: '/hakkimizda',
+  path: '/hakkimizda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HizmetlerimizRoute = HizmetlerimizRouteImport.update({
+  id: '/hizmetlerimiz',
+  path: '/hizmetlerimiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IletisimRoute = IletisimRouteImport.update({
+  id: '/iletisim',
+  path: '/iletisim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RandevuRoute = RandevuRouteImport.update({
+  id: '/randevu',
+  path: '/randevu',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/galeri': typeof GaleriRoute
+  '/hakkimizda': typeof HakkimizdaRoute
+  '/hizmetlerimiz': typeof HizmetlerimizRoute
+  '/iletisim': typeof IletisimRoute
+  '/randevu': typeof RandevuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/galeri': typeof GaleriRoute
+  '/hakkimizda': typeof HakkimizdaRoute
+  '/hizmetlerimiz': typeof HizmetlerimizRoute
+  '/iletisim': typeof IletisimRoute
+  '/randevu': typeof RandevuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/galeri': typeof GaleriRoute
+  '/hakkimizda': typeof HakkimizdaRoute
+  '/hizmetlerimiz': typeof HizmetlerimizRoute
+  '/iletisim': typeof IletisimRoute
+  '/randevu': typeof RandevuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/galeri'
+    | '/hakkimizda'
+    | '/hizmetlerimiz'
+    | '/iletisim'
+    | '/randevu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/galeri'
+    | '/hakkimizda'
+    | '/hizmetlerimiz'
+    | '/iletisim'
+    | '/randevu'
+  id:
+    | '__root__'
+    | '/'
+    | '/galeri'
+    | '/hakkimizda'
+    | '/hizmetlerimiz'
+    | '/iletisim'
+    | '/randevu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GaleriRoute: typeof GaleriRoute
+  HakkimizdaRoute: typeof HakkimizdaRoute
+  HizmetlerimizRoute: typeof HizmetlerimizRoute
+  IletisimRoute: typeof IletisimRoute
+  RandevuRoute: typeof RandevuRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +117,52 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/galeri': {
+      id: '/galeri'
+      path: '/galeri'
+      fullPath: '/galeri'
+      preLoaderRoute: typeof GaleriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hakkimizda': {
+      id: '/hakkimizda'
+      path: '/hakkimizda'
+      fullPath: '/hakkimizda'
+      preLoaderRoute: typeof HakkimizdaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hizmetlerimiz': {
+      id: '/hizmetlerimiz'
+      path: '/hizmetlerimiz'
+      fullPath: '/hizmetlerimiz'
+      preLoaderRoute: typeof HizmetlerimizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iletisim': {
+      id: '/iletisim'
+      path: '/iletisim'
+      fullPath: '/iletisim'
+      preLoaderRoute: typeof IletisimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/randevu': {
+      id: '/randevu'
+      path: '/randevu'
+      fullPath: '/randevu'
+      preLoaderRoute: typeof RandevuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GaleriRoute: GaleriRoute,
+  HakkimizdaRoute: HakkimizdaRoute,
+  HizmetlerimizRoute: HizmetlerimizRoute,
+  IletisimRoute: IletisimRoute,
+  RandevuRoute: RandevuRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
