@@ -91,7 +91,8 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="container-editorial flex flex-col gap-2 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-editorial flex flex-col gap-2 pt-6 pb-20 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between md:pb-6">
+
           <p>© {new Date().getFullYear()} LUMÉ BEAUTY. Tüm hakları saklıdır.</p>
           <p>Bu web sitesindeki yorum ve fiyat bilgileri demo içeriktir.</p>
         </div>
