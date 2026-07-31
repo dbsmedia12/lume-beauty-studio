@@ -1,24 +1,72 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { CtaBand } from "@/components/site/CtaBand";
+import { GalleryMasonry } from "@/components/site/GalleryMasonry";
+import { Hero } from "@/components/site/Hero";
+import { InstagramStrip } from "@/components/site/InstagramStrip";
+import { SectionIntro } from "@/components/site/SectionIntro";
+import { ServiceList } from "@/components/site/ServiceList";
+import { Testimonials } from "@/components/site/Testimonials";
+import { WhyLume } from "@/components/site/WhyLume";
+import { Button } from "@/components/ui/button";
+
+const title = "LUMÉ BEAUTY | İstanbul Güzellik Merkezi";
+const description =
+  "İstanbul'da profesyonel cilt bakımı, lazer epilasyon, manikür, pedikür ve kişisel bakım hizmetleri. LUMÉ BEAUTY ile kendinize özel güzellik deneyimini keşfedin.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:url", content: "/" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+
+      <section className="container-editorial py-20 lg:py-28">
+        <SectionIntro
+          eyebrow="Hizmetlerimiz"
+          title="Cildinize, bakımınıza ve zamanınıza özel uygulamalar."
+          description="Her uygulama, uzman değerlendirmesiyle başlar ve size özel bir plana dönüşür."
+          action={
+            <Button asChild variant="line" size="lg">
+              <Link to="/hizmetlerimiz">Tüm Hizmetler</Link>
+            </Button>
+          }
+        />
+        <ServiceList />
+      </section>
+
+      <WhyLume />
+
+      <section className="container-editorial py-20 lg:py-28">
+        <SectionIntro
+          eyebrow="Galeri"
+          title="Merkezimizden ve uygulamalarımızdan kareler."
+          action={
+            <Button asChild variant="line" size="lg">
+              <Link to="/galeri">Galeriyi Gör</Link>
+            </Button>
+          }
+        />
+        <GalleryMasonry limit={6} />
+      </section>
+
+      <Testimonials />
+      <InstagramStrip />
+      <CtaBand />
+    </>
   );
 }
