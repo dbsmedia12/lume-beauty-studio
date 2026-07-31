@@ -11,8 +11,9 @@ const description =
 
 export const Route = createFileRoute("/randevu")({
   validateSearch: (search: Record<string, unknown>) => ({
-    hizmet: typeof search.hizmet === "string" ? search.hizmet : undefined,
+    hizmet: typeof search["hizmet"] === "string" ? (search["hizmet"] as string) : undefined,
   }),
+
   head: () => ({
     meta: [
       { title },
